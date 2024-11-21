@@ -11,7 +11,7 @@ jobs:
     steps:
       
       - name: Checkout code with Token
-        uses: actions/checkout
+        uses: actions/checkout@V2
         with:
           token: ${{ secrets.PAT }}
       
