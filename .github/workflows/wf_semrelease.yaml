@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code with Token
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_PAT }}
 
       - name: Setup Git
         run: |
