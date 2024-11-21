@@ -19,3 +19,7 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.event.pusher.email || 'actions@github.com' }}"
 
+      - name: Get Last Tag 
+        run: |
+          git fetch –tags
+          LAST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null || echo "v0.0.0")
