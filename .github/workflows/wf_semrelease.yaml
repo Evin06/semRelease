@@ -9,12 +9,20 @@ jobs:
   semRelease:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Checkout code with Token
-        uses: actions/checkout@v4
+      # Checkout code with Token
+      - name: Checkout code
+        uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GITHUB_PAT }}
+          token: ${{ secrets.GITHUB_PAT }} # Ensure GITHUB_PAT is set as a repository secret
+          ssh-strict: true
+          persist-credentials: true
+          clean: true
+          fetch-depth: 1
+          lfs: false
+          submodules: false
+          set-safe-directory: true
 
+      # Setup Git
       - name: Setup Git
         run: |
           git config --global user.name "${{ github.actor }}"
