@@ -9,17 +9,13 @@ jobs:
   semRelease:
     runs-on: ubuntu-latest
     steps:
-      
+
       - name: Checkout code with Token
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.PAT }}
-      
-      - name: Setup git
-        run: |
-          git config --global user.name @${{github.actor}}
-          git config --global user.email @${{github.mail}}
 
-        
-      
-          
+      - name: Setup Git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.event.pusher.email || 'actions@github.com' }}"
