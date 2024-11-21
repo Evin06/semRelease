@@ -1,6 +1,16 @@
-name: Docker Build and Push
+name: semRelease
 
 on:
   push:
     branches:
       - main
+
+jobs:
+  semRelease:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code with Token
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
+      
