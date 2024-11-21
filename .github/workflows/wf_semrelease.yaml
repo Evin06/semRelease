@@ -16,8 +16,8 @@ jobs:
 
       - name: Setup Git
         run: |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.event.pusher.email || 'actions@github.com' }}"
+          git config  user.name "TOTO"
+          git config  user.email "toto@toto.com"
 
       - name: Get Last Tag 
         run: |
