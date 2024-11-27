@@ -40,6 +40,7 @@ jobs:
             echo "CHANGE_TYPE=patch" >> $GITHUB_ENV
           else
             echo "CHANGE_TYPE=none" >> $GITHUB_ENV
+          fi
 
       - name: Determine New Version
         run: |
@@ -66,13 +67,17 @@ jobs:
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
       - name: Create New Tag
-        if: env.NEW_VERSION
+        if: env.NEW_VERSION != ''
         run: |
           git tag $NEW_VERSION
           git push origin $NEW_VERSION
 
       - name: Show New Version
-        if: env.NEW_VERSION
+        if: env.NEW_VERSION != ''
         run: |
           echo "New version created: $NEW_VERSION"
-    
+
+      - name: No Version Change
+        if: env.NEW_VERSION == ''
+        run: |
+          echo "This commit did not lead to a new tag."
