@@ -80,4 +80,4 @@ jobs:
       - name: No Version Change
         if: env.NEW_VERSION == ''
         run: |
-          echo "This commit did not lead to a new tag."
+          echo "Ce commit n’a pas conduit à un tag ."
